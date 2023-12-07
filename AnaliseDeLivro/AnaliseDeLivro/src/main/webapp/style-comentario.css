@@ -1,0 +1,189 @@
+/* Reset de Estilos Padrão */
+body,
+h1,
+h2,
+p,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+h1,
+h2,
+p {
+    margin: 10px 0;
+}
+
+.top-buttons {
+    float: right;
+    margin-top: 10px; /* Ajuste a margem conforme necessário */
+}
+
+/* Botões de Login e Cadastro */
+.signup-button,
+.login-button {
+    padding: 12px 15px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.signup-button {
+    background-color: #3498db;
+}
+
+.login-button {
+    background-color: #4caf50;
+}
+
+.analize-button {
+    background-color: red; /* Cor de fundo desejada */
+    color: #fff; /* Cor do texto */
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Formulário de Pesquisa */
+form {
+    margin-bottom: 10px;
+    margin-top: 0px;
+    align-items: center; /* Alinha itens verticalmente ao centro */
+}
+
+input[type="text"] {
+    padding: 8px;
+    font-size: 14px;
+    margin-left: 150px; /* Adiciona margem à direita do campo de pesquisa */
+}
+
+button[type="submit"] {
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: #fff;
+}
+
+/* comentarios */
+.reviews-title {
+    color: #4caf50;
+    margin-top: 20px;
+}
+
+.reviews-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.review-button {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgb(128, 0, 0);
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+}
+
+.review-1 {
+    background-color: #FFD700;
+}
+
+.review-2 {
+    background-color: #FFA500;
+}
+
+.review-3 {
+    background-color: #FF6347;
+}
+
+.review-4 {
+    background-color: #8A2BE2;
+}
+
+.review-5 {
+    background-color: #00CED1;
+}
+
+.review-6 {
+    background-color: #98FB98;
+}
+
+/* Categorias */
+.categories-container {
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-top: -425px;
+}
+
+.categories-title {
+    text-align: left;
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    
+}
+
+li {
+    display: block;
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Botão Comentários */
+.comentarios-button {
+    width: 150px;
+    height: 40px;
+    margin-top: -100px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgb(128, 0, 0);
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+}

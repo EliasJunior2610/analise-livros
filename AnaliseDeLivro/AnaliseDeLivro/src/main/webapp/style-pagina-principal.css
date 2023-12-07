@@ -1,0 +1,143 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+h1,
+h2,
+p {
+    margin: 10px 0;
+}
+
+
+
+input[type="text"] {
+    padding: 8px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+button,
+.login-button {
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.login-button {
+    background-color: #3498db;
+    color: #fff;
+    text-align: end;
+}
+
+h2 {
+    color: #4caf50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.categories-container {
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-top: -425px;
+}
+
+.categories-title {
+    text-align: left;
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: block;
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Adiciona avaliações */
+.reviews-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+/* Estilo adicional para título das avaliações */
+.reviews-title {
+    color: #4caf50;
+    margin-top: 20px;
+}
+
+/* Estilo dos botões de avaliações */
+.review-button {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+}
+
+/* Cores das avaliações */
+.review-1 {
+    background-color: #FFD700;
+}
+
+.review-2 {
+    background-color: #FFA500;
+}
+
+.review-3 {
+    background-color: #FF6347;
+}
+
+.review-4 {
+    background-color: #8A2BE2;
+}
+
+.review-5 {
+    background-color: #00CED1;
+}
+
+.review-6 {
+    background-color: #98FB98;
+}
