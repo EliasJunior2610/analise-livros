@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 
@@ -9,56 +9,70 @@
 <body>
     <header>
         <div class="top-buttons">
-            <a href="/pagina-cadastro"><button class="signup-button" type="button">nome de usuario</button></a>
+            <a href="cadastro.jsp"><button class="signup-button" type="button">nome de usuario</button></a>
             <br><br><br><br>
-            <a href="/pagina-avalia√ßao"><button class="analize-button" type="button">criar an√°lise</button></a>
-            
+            <a href="avaliacao-livros.jsp"><button class="analize-button" type="button">criar an·lise</button></a>
         </div>
-        
-        <h1>Bem-vindo √†s p√°ginas encantadas</h1>
-        <p>Explore a magia das p√°ginas web com encanto.</p>
+        <h1>Bem-vindo ‡s p·ginas encantadas</h1>
+        <p>Explore a magia das p·ginas web com encanto.</p>
     </header>
-    
-    <form action="/seu-servlet-ou-outro-endpoint" method="get">
-        <input type="text" name="q" placeholder="Pesquisar...">
-        <button type="submit">Buscar</button> 
+
+    <form action="PesquisaServlet" method="get">
+        <input type="text" name="termoPesquisa" class='pesquisar' placeholder="Pesquisar...">
+        <button type="submit">Buscar</button>
     </form>
-   
-        <!-- Avalia√ß√µes -->
-    <h2 class="reviews-title">comentarios</h2>
+
+    <!-- AvaliaÁıes ... -->
+    <h2 class="reviews-title">Coment·rios:</h2>
     <div class="reviews-container">
-        <!-- Primeira Linha -->
-        <a class="review-button review-1" href="/pagina-avaliacao?avaliacao=1">1</a>
-        <a class="review-button review-2" href="/pagina-avaliacao?avaliacao=2">2</a>
-        <a class="review-button review-3" href="/pagina-avaliacao?avaliacao=3">3</a>
+        <%-- Adicione um trecho de cÛdigo Java para buscar os coment·rios do banco de dados --%>
+        <%
+            String url = "jdbc:mysql://localhost:3306/palavrasencantadas";
+            String usuarioBD = "root";
+            String senhaBD = "root";
+
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection conn = DriverManager.getConnection(url, usuarioBD, senhaBD);
+
+                String sql = "SELECT * FROM comentario";
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    String comentario = rs.getString("DescriÁao");
+
+                    out.println("<p>" + comentario + "</p>");
+                }
+
+                rs.close();
+                stmt.close();
+                conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        %>
     </div>
-    <div class="reviews-container">
-        <!-- Segunda Linha -->
-        <a class="review-button review-4" href="/pagina-avaliacao?avaliacao=4">4</a>
-        <a class="review-button review-5" href="/pagina-avaliacao?avaliacao=5">5</a>
-        <a class="review-button review-6" href="/pagina-avaliacao?avaliacao=6">6</a>
+
+    <!-- Coment·rios -->
+    <div class="buttons">
+        <a href="escrever-coment·rio.jsp"><button class="comentarios-button" type="button">escrever comentario</button></a>
     </div>
 
     <!-- Categorias -->
     <div class="categories-container">
-        <h2 class="categories-title">Categoria</h2>
+        <h2 class="categories-title">Categorias</h2>
         <ul>
-            <li><a href="/seu-servlet-ou-outro-endpoint?categoria=Fantasia">Fantasia</a></li>
-            <li><a href="/seu-servlet-ou-outro-endpoint?categoria=Romance">Romance</a></li>
-            <li><a href="/seu-servlet-ou-outro-endpoint?categoria=Drama">Drama</a></li>
-            <li><a href="/seu-servlet-ou-outro-endpoint?categoria=Terror">Terror</a></li>
-            <li><a href="/seu-servlet-ou-outro-endpoint?categoria=Fic√ß√£o Cientifica">Fic√ß√£o Cient√≠fica</a></li>
-            <li><a href="/seu-servlet-ou-outro-endpoint?categoria=Comedia">Com√©dia</a></li>
-            <li><a href="/seu-servlet-ou-outro-endpoint?categoria=Suspense">Suspense</a></li>
-            <li><a href="/seu-servlet-ou-outro-endpoint?categoria=Historia">historia</a></li>
-            <li><a href="/seu-servlet-ou-outro-endpoint?categoria=Misterio">Misterio</a></li>
+            <li><a href="fantasia.jsp">Fantasia</a></li>
+            <li><a href="romance.jsp">Romance</a></li>
+            <li><a href="drama.jsp">Drama</a></li>
+            <li><a href="terror.jsp">Terror</a></li>
+            <li><a href="ficcao-cientifica.jsp">FicÁ„o CientÌfica</a></li>
+            <li><a href="comedia.jsp">ComÈdia</a></li>
+            <li><a href="suspense.jsp">Suspense</a></li>
+            <li><a href="historia.jsp">HistÛria</a></li>
+            <li><a href="misterio.jsp">MistÈrio</a></li>
         </ul>
-    </div>
-    
-    <!-- Coment√°rios -->
-    <br><br><br><br><br><br><br>
-     <div class="buttons">
-        <a href="/pagina-comentarios"><button class="comentarios-button" type="button">escrever comentario</button></a>
     </div>
 </body>
 

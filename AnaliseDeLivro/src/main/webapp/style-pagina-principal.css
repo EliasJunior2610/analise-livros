@@ -9,10 +9,13 @@ body {
 header {
     background-color: #333;
     color: #fff;
-    padding: 10px 0;
+   
+    margin-bottom: 12px;
 }
 
-h1,
+.h1{
+	margin-bottom: 10px;
+}
 h2,
 p {
     margin: 10px 0;
@@ -22,6 +25,18 @@ p {
     display: flex;
     justify-content: flex-end;
     margin-right: 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-left: 40px; /* Ajuste conforme necessário */
+}
+
+.logo {
+    width: 100px; /* Ajuste conforme necessário para o tamanho desejado */
+    height: auto;
+    margin-right: 10px; /* Espaçamento entre a imagem e o texto */
 }
 
 button,
@@ -60,7 +75,7 @@ h2 {
     text-align: center;
     margin-bottom: 20px;
 }
- 
+
 .categories-container {
     text-align: left;
     margin-left: 20px;
@@ -70,7 +85,6 @@ h2 {
 .categories-title {
     text-align: left;
     margin-left: 0px;
-    
 }
 
 ul {
@@ -147,6 +161,40 @@ a:hover {
 }
 
 h3 {
-	margin-right: 5%;
-	margin-top: 100px;
+    margin-right: 5%;
+    margin-top: 100px;
+}
+
+#perfilBox {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+}
+
+#perfilBox a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+#perfilBox a:hover {
+    text-decoration: underline;
+}
+
+.user-profile {
+    color: white;
+    padding-right: 8px;
+    margin-top: 5px;
+}
+
+.logout {
+    color: white;
+    padding-right: 8px;
+    margin-top: 5px;
 }

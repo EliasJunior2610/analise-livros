@@ -17,7 +17,7 @@
       <label for="password">Senha:</label>
       <input type="password" id="password" name="password" required>
       <br>
-	  <a  href="recuperar-senha.jsp">Esqueci a senha</a>
+      <a href="recuperar-senha.jsp">Esqueci a senha</a>
       <button type="submit">Entrar</button>
     </form>
   </div>

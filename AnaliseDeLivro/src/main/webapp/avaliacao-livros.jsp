@@ -11,6 +11,48 @@
       var genreOptions = document.getElementById("genre-options");
       genreOptions.style.display = genreOptions.style.display === "none" ? "block" : "none";
     }
+
+    function selectGenres() {
+      var bookTitle = document.getElementById("titulo");
+      var genreOptions = document.getElementById("genre-options");
+      var fantasyCheckbox = document.getElementById("fantasy");
+      var sciFiCheckbox = document.getElementById("sci-fi");
+
+      // Habilita todos os checkboxes
+      fantasyCheckbox.disabled = false;
+      sciFiCheckbox.disabled = false;
+
+      // Verifica o título selecionado
+      switch (bookTitle.value) {
+        case "star-wars":
+          // Se o título for "Star Wars", escolhe automaticamente "Ficção Científica"
+          sciFiCheckbox.checked = true;
+
+          // Desabilita os checkboxes para impedir que o usuário desmarque
+          fantasyCheckbox.disabled = true;
+          sciFiCheckbox.disabled = true;
+
+          // Esconde as opções de gênero para o usuário
+          genreOptions.style.display = "none";
+          break;
+
+        case "lord-of-the-rings":
+          // Se o título for "Senhor dos Anéis", escolhe automaticamente "Fantasia"
+          fantasyCheckbox.checked = true;
+
+          // Desabilita os checkboxes para impedir que o usuário desmarque
+          fantasyCheckbox.disabled = true;
+          sciFiCheckbox.disabled = true;
+
+          // Esconde as opções de gênero para o usuário
+          genreOptions.style.display = "none";
+          break;
+
+        default:
+          // Para outros livros, redefina as opções
+          break;
+      }
+    }
   </script>
 </head>
 <body>
@@ -18,51 +60,27 @@
     <h1>Avaliação de Livros</h1>
     <form id="form" action="BookReviewServlet" method="post">
       <label for="title">Título do Livro:</label>
-      <select id="titulo" name="titulo" required>
-        <option value="fiction">Escolha o seu livro abaixo:</option>
-        <option value="fiction">Star Wars</option>
-        <option value="non-fiction">Senhor dos Anéis</option>
-        <option value="mystery">Nárnia</option>
-        <option value="sci-fi">Crespúsculo</option>
+      <select id="titulo" name="titulo" onchange="selectGenres()" required>
+        <option value="choose" disabled selected>Escolha o seu livro abaixo:</option>
+        <option value="star-wars">Star Wars</option>
+        <option value="lord-of-the-rings">Senhor dos Anéis</option>
+        <!-- Adicione mais opções de livros aqui -->
       </select>
 
-      <label for="author">usuario:</label>
+      <label for="author">Autor:</label>
       <input type="text" id="author" name="author" required>
 
       <label for="genre">Gênero:</label>
       <button type="button" onclick="toggleGenres()">Gênero</button>
       <div class="checkbox-group" id="genre-options" style="display: none;">
-        <input type="checkbox" id="fiction" name="genre" value="fiction">
-        <label for="fiction">Ficção</label>
+        <input type="checkbox" id="fantasy" name="genre" value="Fantasia" disabled>
+        <label for="fantasy">Fantasia</label>
 
-        <input type="checkbox" id="non-fiction" name="genre" value="Nao Ficcao">
-        <label for="non-fiction">Não Ficção</label>
-
-        <input type="checkbox" id="mystery" name="genre" value="Misterio">
-        <label for="mystery">Mistério</label>
-
-        <input type="checkbox" id="sci-fi" name="genre" value="Ficcao Cientifica">
+        <input type="checkbox" id="sci-fi" name="genre" value="Ficcao Cientifica" disabled>
         <label for="sci-fi">Ficção Científica</label>
-        
-        <input type="checkbox" id="historia" name="genre" value="Historia">
-        <label for="historia">História</label>
-        
-        <input type="checkbox" id="drama" name="genre" value="Drama">
-        <label for="drama">Drama</label>
-        
-        <input type="checkbox" id="romance" name="genre" value="Romance">
-        <label for="romance">Romance</label>
-        
-        <input type="checkbox" id="suspense" name="genre" value="Suspense">
-        <label for="suspense">Suspense</label>
-        
-        <input type="checkbox" id="terror" name="genre" value="Terror">
-        <label for="terror">terror</label>
-        
-        <input type="checkbox" id="comedia" name="genre" value="Comedia">
-        <label for="comedia">Comédia</label>
-      </div>
 
+        <!-- Adicione mais opções de gênero aqui -->
+      </div>
 
       <label for="rating">Avaliação (1 a 5):</label>
       <div class="rating" id='rating'>

@@ -30,9 +30,11 @@ CREATE TABLE `avaliaçao` (
   `Descriçao` varchar(280) DEFAULT NULL,
   `nota` int DEFAULT NULL,
   `genero` varchar(244) DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
   KEY `Titulo` (`Titulo`),
   KEY `NomeDeUsuario` (`NomeDeUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +43,7 @@ CREATE TABLE `avaliaçao` (
 
 LOCK TABLES `avaliaçao` WRITE;
 /*!40000 ALTER TABLE `avaliaçao` DISABLE KEYS */;
-INSERT INTO `avaliaçao` VALUES (NULL,NULL,NULL,NULL,NULL),(NULL,NULL,NULL,NULL,NULL),(NULL,NULL,NULL,NULL,NULL),(NULL,NULL,NULL,NULL,NULL),('Star Wars','blabla','oi',3,NULL),('Star','bla','oi',5,NULL),(NULL,NULL,NULL,NULL,NULL),(NULL,NULL,NULL,8,NULL),('Star wars','Elias','oi',5,NULL),(NULL,NULL,NULL,5,NULL),(NULL,NULL,NULL,7,NULL),('mystery','Elias','oi',7,NULL),('Senhor dos AnÃ©is','Luan','testezinho',7,NULL),('sei la','eu','qualquer coisa',3,'morte'),('non-fiction','MenorL','vai, funciona',NULL,'3'),('mystery','MenorL','iae',2,NULL),('mystery','MenorL','dale',2,'drama'),('non-fiction','MenorL','olÃ¡',1,'fiction, HistÃ³ria, terror, ComÃ©dia');
+INSERT INTO `avaliaçao` VALUES ('star-wars','Elias','ruim',3,'Fantasia, Ficcao Cientifica',1),('star-wars','algo','teste de mais cedo\r\n',3,'',2),('star-wars','algo','avaliado legal',5,'',3),('star-wars','algo','opazinho',3,'',4),('star-wars','algo','iae,massa',3,'',5),('star-wars','algo','teste mais um',4,'Fantasia, Ficcao Cientifica',6);
 /*!40000 ALTER TABLE `avaliaçao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,10 +55,11 @@ DROP TABLE IF EXISTS `comentario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comentario` (
-  `Titulo` varchar(100) DEFAULT NULL,
+  `id` varchar(100) NOT NULL,
   `NomeDeUsuario` varchar(100) DEFAULT NULL,
   `Descriçao` varchar(280) DEFAULT NULL,
-  KEY `Titulo` (`Titulo`),
+  PRIMARY KEY (`id`),
+  KEY `Titulo` (`id`),
   KEY `NomeDeUsuario` (`NomeDeUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -67,33 +70,8 @@ CREATE TABLE `comentario` (
 
 LOCK TABLES `comentario` WRITE;
 /*!40000 ALTER TABLE `comentario` DISABLE KEYS */;
+INSERT INTO `comentario` VALUES ('star wars','opa','Ã© bom');
 /*!40000 ALTER TABLE `comentario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `livros`
---
-
-DROP TABLE IF EXISTS `livros`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `livros` (
-  `titulo` varchar(100) NOT NULL,
-  `editora` varchar(100) DEFAULT NULL,
-  `genero` varchar(100) DEFAULT NULL,
-  `autor` varchar(100) DEFAULT NULL,
-  `ano` int DEFAULT NULL,
-  PRIMARY KEY (`titulo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `livros`
---
-
-LOCK TABLES `livros` WRITE;
-/*!40000 ALTER TABLE `livros` DISABLE KEYS */;
-/*!40000 ALTER TABLE `livros` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -117,16 +95,12 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES ('blabla','eliasjuniorradical@gmail.com','123456789pl'),('Elias','elias@gmail.com','sales123'),('opa','jeaijsdi@gmail.com','1234567p'),('Zezinho','denyel@gmail.com','zezinho123');
+INSERT INTO `usuario` VALUES ('algo','algumacoisa@gmail.com','jpfzqTCV3DzVg+ZwP1PuC2z9+w9MCEinl6LdkJsnoxw='),('luanbrabo','luan.omito@gmal.com','7dT9U6HuQsxyDxVtGQ2d+F7buZ+T+3I7egp/A+IpOXw=');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
 -- Dumping events for database 'palavrasencantadas'
---
-
---
--- Dumping routines for database 'palavrasencantadas'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -138,4 +112,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-06 21:19:19
+-- Dump completed on 2023-12-08 16:42:58

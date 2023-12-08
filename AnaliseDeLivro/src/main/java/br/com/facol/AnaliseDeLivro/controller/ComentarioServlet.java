@@ -16,7 +16,7 @@ public class ComentarioServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String titulo = request.getParameter("campoTitulo");
+        String id = request.getParameter("id");
         String nomeUsuario = request.getParameter("campoNomeUsuario");
         String comentario = request.getParameter("campoComentario");
 
@@ -31,7 +31,7 @@ public class ComentarioServlet extends HttpServlet {
 
             String sql = "INSERT INTO comentario (Titulo, NomeDeUsuario, Descriçao) VALUES (?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, titulo);
+            statement.setString(1, id);
             statement.setString(2, nomeUsuario);
             statement.setString(3, comentario);
 
@@ -39,7 +39,7 @@ public class ComentarioServlet extends HttpServlet {
             if (rows > 0) {
                 response.sendRedirect("pagina-principal.jsp"); 
             } else {
-                response.sendRedirect("escrever-comentario.jsp"); 
+                response.sendRedirect("escrever-comentário.jsp?id=" + id); 
             }
 
             statement.close();

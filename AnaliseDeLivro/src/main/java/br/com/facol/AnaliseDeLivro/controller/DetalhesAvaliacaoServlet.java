@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/PesquisaServlet")
-public class PesquisaServlet extends HttpServlet {
+@WebServlet("/DetalhesAvaliacaoServlet")
+public class DetalhesAvaliacaoServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -23,7 +23,7 @@ public class PesquisaServlet extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        String termoPesquisa = request.getParameter("termoPesquisa");
+        String id = request.getParameter("id");
 
         String url = "jdbc:mysql://localhost:3306/palavrasencantadas";
         String usuario = "root";
@@ -40,26 +40,33 @@ public class PesquisaServlet extends HttpServlet {
         }
 
         try (Connection conn = DriverManager.getConnection(url, usuario, senha)) {
-            String sql = "SELECT * FROM avaliaçao WHERE Titulo LIKE ?";
+            String sql = "SELECT * FROM avaliaçao WHERE id = ?";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setString(1, "%" + termoPesquisa + "%");
+                stmt.setString(1, id);
 
                 try (ResultSet rs = stmt.executeQuery()) {
-                    out.println("<html><head><title>Resultados da Pesquisa</title></head><body>");
-                    out.println("<h2>Resultados da Pesquisa para '" + termoPesquisa + "':</h2>");
-
                     if (rs.next()) {
-                        do {
-                            String titulo = rs.getString("Titulo");
-                            String id = rs.getString("id");
+                        // Adicione mais detalhes conforme necessário
+                        String titulo = rs.getString("Titulo");
+                        String autor = rs.getString("NomeDeUsuario");
+                        String conteudo = rs.getString("Descriçao");
 
-                            out.println("<p><a href='DetalhesAvaliacaoServlet?id=" + id + "'>" + titulo + "</a></p>");
-                        } while (rs.next());
+                        out.println("<html><head><title>Detalhes da Avaliação</title></head><body>");
+                        out.println("<h2>Detalhes da Avaliação</h2>");
+                        out.println("<p><strong>Título:</strong> " + titulo + "</p>");
+                        out.println("<p><strong>Autor:</strong> " + autor + "</p>");
+                        out.println("<p><strong>Conteúdo:</strong> " + conteudo + "</p>");
+
+                        // Adiciona o botão para redirecionar para comentarios.jsp
+                        out.println("<form action='comentarios.jsp' method='get'>");
+                        out.println("<input type='hidden' name='id' value='" + id + "'>");
+                        out.println("<input type='submit' value='Ver Comentários'>");
+                        out.println("</form>");
+
+                        out.println("</body></html>");
                     } else {
-                        out.println("<p>Nenhum resultado encontrado para o termo de pesquisa: " + termoPesquisa + "</p>");
+                        out.println("<p>Avaliação não encontrada com o ID: " + id + "</p>");
                     }
-
-                    out.println("</body></html>");
                 }
             }
         } catch (SQLException e) {

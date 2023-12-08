@@ -2,7 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escrever Comentário</title>
+    <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -17,16 +20,12 @@
             padding: 1em;
         }
 
-        h1 {
-            margin-bottom: 0.5em;
-        }
-
         label {
             display: block;
             margin-top: 1em;
         }
 
-        input {
+        input, textarea {
             width: 100%;
             padding: 0.5em;
             margin-top: 0.5em;
@@ -43,25 +42,16 @@
         button:hover {
             background-color: #45a049;
         }
-
-        .comment {
-            border: 1px solid #ccc;
-            margin-top: 1em;
-            padding: 1em;
-            text-align: left;
-        }
-
-        .comment p {
-            margin: 0;
-        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Página de Comentários em Java</h1>
+        <h1>Palavras Encantadas</h1>
     </header>
 
     <form action="ComentarioServlet" method="post">
+        <input type="hidden" name="id" value="<%= request.getParameter("id") %>">
+        
         <label for="campoTitulo">Título:</label>
         <input type="text" id="campoTitulo" name="campoTitulo" />
 
@@ -69,9 +59,11 @@
         <input type="text" id="campoNomeUsuario" name="campoNomeUsuario" />
 
         <label for="campoComentario">Comentário:</label>
-        <input type="text" id="campoComentario" name="campoComentario" />
-
+        <textarea id="campoComentario" name="campoComentario" rows="4"></textarea>
+        
+        <br>
         <button type="submit">Enviar Comentário</button>
     </form>
+
 </body>
 </html>
