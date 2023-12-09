@@ -9,7 +9,6 @@
 <body>
     <header>
        <div class="top-buttons">
-            <a href="cadastro.jsp"><button class="signup-button" type="button">nome de usuario</button></a>
             <br><br><br><br>
             <a href="avaliacao-livros.jsp"><button class="analize-button" type="button">criar análise</button></a>
             
@@ -47,21 +46,7 @@ Assassinato no Expresso Oriente</a>
         <a class="review-button review-8" href="/pagina-avaliacao?avaliacao=5">Jane Eyre</a>
         <a class="review-button review-9" href="/pagina-avaliacao?avaliacao=6">Romeu e Julieta</a>
     </div>
-    <!-- Categorias -->
-    <div class="categories-container">
-        <h2 class="categories-title">Categoria</h2>
-        <ul>
-            <li><a href="fantasia.jsp">Fantasia</a></li>
-            <li><a href="romance.jsp">Romance</a></li>
-            <li><a href="drama.jsp">Drama</a></li>
-            <li><a href="terror.jsp">Terror</a></li>
-            <li><a href="ficcao-cientifica.jsp">Ficção Científica</a></li>
-            <li><a href="comedia.jsp">Comédia</a></li>
-            <li><a href="suspense.jsp">Suspense</a></li>
-            <li><a href="historia.jsp">História</a></li>
-            <li><a href="misterio.jsp">Mistério</a></li>
-        </ul>
-    </div>
+    
     
     </body>
 

@@ -2,12 +2,12 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.sql.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-
 <%
     String username = (String) session.getAttribute("username");
 %>
+<!DOCTYPE html>
+<html>
+
 <head>
     <link rel="stylesheet" type="text/css" href="style-pagina-principal.css">
 </head>
@@ -42,58 +42,59 @@
     <!-- Avaliações -->
     <h2 class="reviews-title">Avaliações</h2>
     <div class="reviews-container">
+    <table>
+        <tr>
+            <%-- Adicione um trecho de código Java para buscar as avaliações do banco de dados --%>
+            <%
+                // Substitua essas informações pelas suas credenciais de banco de dados
+                String url = "jdbc:mysql://localhost:3306/palavrasencantadas";
+                String usuarioBD = "root";
+                String senhaBD = "root";
 
-        <%-- Adicione um trecho de código Java para buscar as avaliações do banco de dados --%>
-        <%
-            // Substitua essas informações pelas suas credenciais de banco de dados
-            String url = "jdbc:mysql://localhost:3306/palavrasencantadas";
-            String usuarioBD = "root";
-            String senhaBD = "root";
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Connection conn = DriverManager.getConnection(url, usuarioBD, senhaBD);
 
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection conn = DriverManager.getConnection(url, usuarioBD, senhaBD);
+                    // Consulta SQL para buscar avaliações (substitua 'avaliacao' pelo nome real da tabela)
+                    String sql = "SELECT * FROM avaliaçao";
+                    PreparedStatement stmt = conn.prepareStatement(sql);
+                    ResultSet rs = stmt.executeQuery();
 
-                // Consulta SQL para buscar avaliações (substitua 'avaliacao' pelo nome real da tabela)
-                String sql = "SELECT * FROM avaliaçao";
-                PreparedStatement stmt = conn.prepareStatement(sql);
-                ResultSet rs = stmt.executeQuery();
+                    int count = 0;
 
-                // Loop para exibir as avaliações
-                while (rs.next()) {
-                    String titulo = rs.getString("Titulo");
-                    int id = rs.getInt("id");
+                    // Loop para exibir as avaliações
+                    while (rs.next()) {
+                        String titulo = rs.getString("Titulo");
+                        int id = rs.getInt("id");
 
-                    // Adicione um link dinâmico para a página de detalhes da avaliação
-                    out.println("<a class='review-button' href='DetalhesAvaliacaoServlet?id=" + id + "'>" + titulo + "</a>");
+                        // Adicione um link dinâmico para a página de detalhes da avaliação
+                        out.println("<td><a class='review-button' href='DetalhesAvaliacaoServlet?id=" + id + "'>" + titulo + "</a></td>");
+
+                        // Incrementa o contador
+                        count++;
+
+                        // Verifica se atingiu o limite de 3 avaliações por linha
+                        if (count == 3) {
+                            out.println("</tr><tr>");
+                            count = 0; // Reinicia o contador para a próxima linha
+                        }
+                    }
+
+                    // Fechar as conexões
+                    rs.close();
+                    stmt.close();
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
+            %>
+        </tr>
+    </table>
+</div>
 
-                // Fechar as conexões
-                rs.close();
-                stmt.close();
-                conn.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        %>
-
-    </div>
 
     <!-- Categorias -->
-    <div class="categories-container">
-        <h2 class="categories-title">Categoria</h2>
-        <ul>
-            <li><a href="fantasia.jsp">Fantasia</a></li>
-            <li><a href="romance.jsp">Romance</a></li>
-            <li><a href="drama.jsp">Drama</a></li>
-            <li><a href="terror.jsp">Terror</a></li>
-            <li><a href="ficcao-cientifica.jsp">Ficção Científica</a></li>
-            <li><a href="comedia.jsp">Comédia</a></li>
-            <li><a href="suspense.jsp">Suspense</a></li>
-            <li><a href="historia.jsp">História</a></li>
-            <li><a href="misterio.jsp">Mistério</a></li>
-        </ul>
-    </div>
+    
 
     <!-- sobre o site -->
     <br><br><br><br><br><br>
@@ -112,5 +113,20 @@
         }
     </script>
 </body>
+
+<div class="categories-container">
+    <h2 class="categories-title">Categoria</h2>
+    <ul>
+        <li><a href="fantasia.jsp">Fantasia</a></li>
+        <li><a href="romance.jsp">Romance</a></li>
+        <li><a href="drama.jsp">Drama</a></li>
+        <li><a href="terror.jsp">Terror</a></li>
+        <li><a href="ficcao-cientifica.jsp">Ficção Científica</a></li>
+        <li><a href="comedia.jsp">Comédia</a></li>
+        <li><a href="suspense.jsp">Suspense</a></li>
+        <li><a href="historia.jsp">História</a></li>
+        <li><a href="misterio.jsp">Mistério</a></li>
+    </ul>
+</div>
 
 </html>

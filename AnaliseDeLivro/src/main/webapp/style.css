@@ -62,7 +62,7 @@ button:hover {
 .checkbox-group {
       display: flex;
       flex-direction: row;
-      margin-top: 5px;
+	  
 }
 
 .checkbox-group label {

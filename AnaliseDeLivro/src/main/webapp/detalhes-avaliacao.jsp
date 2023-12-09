@@ -8,6 +8,6 @@
 <body>
     <h2>Detalhes da Avaliação</h2>
     <p><strong>Título:</strong> ${avaliacao.titulo}</p>
-    <!-- Adicione mais detalhes conforme necessário -->
+    
 </body>
 </html>

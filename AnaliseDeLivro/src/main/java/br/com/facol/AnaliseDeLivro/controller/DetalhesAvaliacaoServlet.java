@@ -45,8 +45,7 @@ public class DetalhesAvaliacaoServlet extends HttpServlet {
                 stmt.setString(1, id);
 
                 try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.next()) {
-                        // Adicione mais detalhes conforme necessário
+                    if (rs.next()) {                  
                         String titulo = rs.getString("Titulo");
                         String autor = rs.getString("NomeDeUsuario");
                         String conteudo = rs.getString("Descriçao");
@@ -57,7 +56,7 @@ public class DetalhesAvaliacaoServlet extends HttpServlet {
                         out.println("<p><strong>Autor:</strong> " + autor + "</p>");
                         out.println("<p><strong>Conteúdo:</strong> " + conteudo + "</p>");
 
-                        // Adiciona o botão para redirecionar para comentarios.jsp
+                        
                         out.println("<form action='comentarios.jsp' method='get'>");
                         out.println("<input type='hidden' name='id' value='" + id + "'>");
                         out.println("<input type='submit' value='Ver Comentários'>");

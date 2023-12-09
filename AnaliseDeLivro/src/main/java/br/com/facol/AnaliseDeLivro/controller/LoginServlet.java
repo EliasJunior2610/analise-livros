@@ -41,16 +41,16 @@ public class LoginServlet extends HttpServlet {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                // Obter o hash armazenado no banco de dados
+                
                 String storedHashedPassword = rs.getString("Senha");
 
-                // Comparar o hash da senha inserida pelo usuário com o hash armazenado
+                
                 if (checkPassword(password, storedHashedPassword)) {
-                    // Set the username attribute in the session
+                    
                     HttpSession session = request.getSession();
                     session.setAttribute("username", username);
 
-                    // Redirect to the welcome page or any other page
+                    
                     response.sendRedirect("pagina-principal.jsp");
                 } else {
                     out.println("Nome de usuário ou senha inválidos!");

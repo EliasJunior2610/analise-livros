@@ -30,9 +30,9 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         try {
-            // Verificar se a senha atende aos requisitos
+            
             if (isValidPassword(password)) {
-                // Aplicar hash à senha
+                
                 String hashedPassword = hashPassword(password);
 
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -66,14 +66,14 @@ public class RegisterServlet extends HttpServlet {
     }
     
 
-    // Método para verificar se a senha atende aos requisitos
+    
     private boolean isValidPassword(String password) {
-        // Verifica se a senha tem pelo menos 8 caracteres
+        
         if (password.length() < 8) {
             return false;
         }
 
-        // Verifica se a senha contém pelo menos uma letra e um número
+        
         boolean hasLetter = false;
         boolean hasDigit = false;
 
@@ -84,7 +84,7 @@ public class RegisterServlet extends HttpServlet {
                 hasDigit = true;
             }
 
-            // Se já encontrou ambos, pode sair do loop
+            
             if (hasLetter && hasDigit) {
                 break;
             }

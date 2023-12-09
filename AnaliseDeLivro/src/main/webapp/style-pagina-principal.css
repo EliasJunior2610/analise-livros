@@ -30,13 +30,13 @@ p {
 .logo-container {
     display: flex;
     align-items: center;
-    margin-left: 40px; /* Ajuste conforme necessário */
+    margin-left: 40px; 
 }
 
 .logo {
-    width: 100px; /* Ajuste conforme necessário para o tamanho desejado */
+    width: 100px; 
     height: auto;
-    margin-right: 10px; /* Espaçamento entre a imagem e o texto */
+    margin-right: 10px; 
 }
 
 button,
@@ -77,14 +77,13 @@ h2 {
 }
 
 .categories-container {
-    text-align: left;
-    margin-left: 20px;
-    margin-top: -425px;
+    text-align: start;
+    padding: 20px;
+    margin-top: -600px;
 }
 
 .categories-title {
-    text-align: left;
-    margin-left: 0px;
+    text-align: start;
 }
 
 ul {

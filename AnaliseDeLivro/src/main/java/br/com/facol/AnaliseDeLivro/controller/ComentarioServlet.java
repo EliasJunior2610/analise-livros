@@ -20,7 +20,6 @@ public class ComentarioServlet extends HttpServlet {
         String nomeUsuario = request.getParameter("campoNomeUsuario");
         String comentario = request.getParameter("campoComentario");
 
-        // JDBC Connection
         String jdbcURL = "jdbc:mysql://localhost:3306/palavrasencantadas";
         String dbUser = "root";
         String dbPassword = "root";

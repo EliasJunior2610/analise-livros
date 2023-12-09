@@ -102,6 +102,10 @@ UNLOCK TABLES;
 --
 -- Dumping events for database 'palavrasencantadas'
 --
+
+--
+-- Dumping routines for database 'palavrasencantadas'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -112,4 +116,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-08 16:42:58
+-- Dump completed on 2023-12-08 22:51:51

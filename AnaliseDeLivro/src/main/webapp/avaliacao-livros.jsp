@@ -1,4 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<%@ page import="javax.sql.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+   
+    String username = (String) session.getAttribute("username");
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,34 +23,176 @@
     function selectGenres() {
       var bookTitle = document.getElementById("titulo");
       var genreOptions = document.getElementById("genre-options");
-      var fantasyCheckbox = document.getElementById("fantasy");
-      var sciFiCheckbox = document.getElementById("sci-fi");
+      var romanceCheckbox = document.getElementById("romance");
+      var terrorCheckbox = document.getElementById("terror");
+      var comediaCheckbox = document.getElementById("comedia");
+      var suspenseCheckbox = document.getElementById("suspense");
+      var historiaCheckbox = document.getElementById("historia");
+      var misterioCheckbox = document.getElementById("misterio");
+      var fantasiaCheckbox = document.getElementById("fantasia");
+      var ficcaoCientificaCheckbox = document.getElementById("ficcao-cientifica");
+      var dramaCheckbox = document.getElementById("drama");
 
       // Habilita todos os checkboxes
-      fantasyCheckbox.disabled = false;
-      sciFiCheckbox.disabled = false;
+      romanceCheckbox.disabled = false;
+      terrorCheckbox.disabled = false;
+      comediaCheckbox.disabled = false;
+      suspenseCheckbox.disabled = false;
+      historiaCheckbox.disabled = false;
+      misterioCheckbox.disabled = false;
+      fantasiaCheckbox.disabled = false;
+      ficcaoCientificaCheckbox.disabled = false;
+      dramaCheckbox.disabled = false;
 
       // Verifica o título selecionado
       switch (bookTitle.value) {
-        case "star-wars":
-          // Se o título for "Star Wars", escolhe automaticamente "Ficção Científica"
-          sciFiCheckbox.checked = true;
+        case "persy-jackson":
+        case "narnia":
+        case "harry-potter":
+          // Se o título for um dos livros de fantasia mencionados, escolhe automaticamente "Fantasia"
+          fantasiaCheckbox.checked = true;
 
           // Desabilita os checkboxes para impedir que o usuário desmarque
-          fantasyCheckbox.disabled = true;
-          sciFiCheckbox.disabled = true;
+          fantasiaCheckbox.disabled = true;
+          romanceCheckbox.disabled = true;
+          terrorCheckbox.disabled = true;
+          comediaCheckbox.disabled = true;
+          suspenseCheckbox.disabled = true;
+          historiaCheckbox.disabled = true;
+          misterioCheckbox.disabled = true;
+          ficcaoCientificaCheckbox.disabled = true;
+          dramaCheckbox.disabled = true;
 
           // Esconde as opções de gênero para o usuário
           genreOptions.style.display = "none";
           break;
 
-        case "lord-of-the-rings":
-          // Se o título for "Senhor dos Anéis", escolhe automaticamente "Fantasia"
-          fantasyCheckbox.checked = true;
+        case "neuromancer":
+        case "duna":
+        case "1984":
+          // Se o título for um dos livros de ficção científica mencionados, escolhe automaticamente "Ficção Científica"
+          ficcaoCientificaCheckbox.checked = true;
 
           // Desabilita os checkboxes para impedir que o usuário desmarque
-          fantasyCheckbox.disabled = true;
-          sciFiCheckbox.disabled = true;
+          fantasiaCheckbox.disabled = true;
+          romanceCheckbox.disabled = true;
+          terrorCheckbox.disabled = true;
+          comediaCheckbox.disabled = true;
+          suspenseCheckbox.disabled = true;
+          historiaCheckbox.disabled = true;
+          misterioCheckbox.disabled = true;
+          ficcaoCientificaCheckbox.disabled = true;
+          dramaCheckbox.disabled = true;
+
+
+          // Esconde as opções de gênero para o usuário
+          genreOptions.style.display = "none";
+          break;
+
+        case "cade-voce-bernadette":
+        case "o-diabo-veste-prata":
+        case "vermelho-branco-e-sangue-azul":
+          // Se o título for um dos livros de comédia mencionados, escolhe automaticamente "Comédia"
+          comediaCheckbox.checked = true;
+
+          // Desabilita os checkboxes para impedir que o usuário desmarque
+          fantasiaCheckbox.disabled = true;
+          romanceCheckbox.disabled = true;
+          terrorCheckbox.disabled = true;
+          comediaCheckbox.disabled = true;
+          suspenseCheckbox.disabled = true;
+          historiaCheckbox.disabled = true;
+          misterioCheckbox.disabled = true;
+          ficcaoCientificaCheckbox.disabled = true;
+          dramaCheckbox.disabled = true;
+
+          // Esconde as opções de gênero para o usuário
+          genreOptions.style.display = "none";
+          break;
+
+        case "a-garota-do-lago":
+        case "um-de-nos-esta-mentindo":
+        case "jane-eyre":
+          // Se o título for um dos livros de drama mencionados, escolhe automaticamente "Drama"
+          dramaCheckbox.checked = true;
+
+          // Desabilita os checkboxes para impedir que o usuário desmarque
+          fantasiaCheckbox.disabled = true;
+          romanceCheckbox.disabled = true;
+          terrorCheckbox.disabled = true;
+          comediaCheckbox.disabled = true;
+          suspenseCheckbox.disabled = true;
+          historiaCheckbox.disabled = true;
+          misterioCheckbox.disabled = true;
+          ficcaoCientificaCheckbox.disabled = true;
+          dramaCheckbox.disabled = true;
+
+
+          // Esconde as opções de gênero para o usuário
+          genreOptions.style.display = "none";
+          break;
+
+        case "a-danca-da-morte":
+        case "o-cemiterio":
+        case "lembre-se":
+          // Se o título for um dos livros de terror mencionados, escolhe automaticamente "Terror"
+          terrorCheckbox.checked = true;
+
+          // Desabilita os checkboxes para impedir que o usuário desmarque
+          fantasiaCheckbox.disabled = true;
+          romanceCheckbox.disabled = true;
+          terrorCheckbox.disabled = true;
+          comediaCheckbox.disabled = true;
+          suspenseCheckbox.disabled = true;
+          historiaCheckbox.disabled = true;
+          misterioCheckbox.disabled = true;
+          ficcaoCientificaCheckbox.disabled = true;
+          dramaCheckbox.disabled = true;
+
+
+          // Esconde as opções de gênero para o usuário
+          genreOptions.style.display = "none";
+          break;
+
+        case "rebecca":
+        case "morte-no-internato":
+        case "garota-exemplar":
+          // Se o título for um dos livros de suspense mencionados, escolhe automaticamente "Suspense"
+          suspenseCheckbox.checked = true;
+
+          // Desabilita os checkboxes para impedir que o usuário desmarque
+          fantasiaCheckbox.disabled = true;
+          romanceCheckbox.disabled = true;
+          terrorCheckbox.disabled = true;
+          comediaCheckbox.disabled = true;
+          suspenseCheckbox.disabled = true;
+          historiaCheckbox.disabled = true;
+          misterioCheckbox.disabled = true;
+          ficcaoCientificaCheckbox.disabled = true;
+          dramaCheckbox.disabled = true;
+
+
+          // Esconde as opções de gênero para o usuário
+          genreOptions.style.display = "none";
+          break;
+
+        case "o-simbolo-perdido":
+        case "a-mortalha-dourada":
+        case "o-homem-de-giz":
+          // Se o título for um dos livros de mistério mencionados, escolhe automaticamente "Mistério"
+          misterioCheckbox.checked = true;
+
+          // Desabilita os checkboxes para impedir que o usuário desmarque
+          fantasiaCheckbox.disabled = true;
+          romanceCheckbox.disabled = true;
+          terrorCheckbox.disabled = true;
+          comediaCheckbox.disabled = true;
+          suspenseCheckbox.disabled = true;
+          historiaCheckbox.disabled = true;
+          misterioCheckbox.disabled = true;
+          ficcaoCientificaCheckbox.disabled = true;
+          dramaCheckbox.disabled = true;
+
 
           // Esconde as opções de gênero para o usuário
           genreOptions.style.display = "none";
@@ -62,25 +212,74 @@
       <label for="title">Título do Livro:</label>
       <select id="titulo" name="titulo" onchange="selectGenres()" required>
         <option value="choose" disabled selected>Escolha o seu livro abaixo:</option>
-        <option value="star-wars">Star Wars</option>
-        <option value="lord-of-the-rings">Senhor dos Anéis</option>
+        <!-- Livros de Fantasia -->
+        <option value="persy-jackson">Percy Jackson</option>
+        <option value="narnia">Nárnia</option>
+        <option value="harry-potter">Harry Potter</option>
+        <!-- Livros de Ficção Científica -->
+        <option value="neuromancer">Neuromancer</option>
+        <option value="duna">Duna</option>
+        <option value="1984">1984</option>
+        <!-- Livros de Comédia -->
+        <option value="cade-voce-bernadette">Cadê Você, Bernadette?</option>
+        <option value="o-diabo-veste-prata">O Diabo Veste Prata</option>
+        <option value="vermelho-branco-e-sangue-azul">Vermelho, Branco e Sangue Azul</option>
+        <!-- Livros de Drama -->
+        <option value="a-garota-do-lago">A Garota do Lago</option>
+        <option value="um-de-nos-esta-mentindo">Um de Nós Está Mentindo</option>
+        <option value="jane-eyre">Jane Eyre</option>
+        <!-- Livros de Terror -->
+        <option value="a-danca-da-morte">A Dança da Morte</option>
+        <option value="o-cemiterio">O Cemitério</option>
+        <option value="lembre-se">Lembre-se</option>
+        <!-- Livros de Suspense -->
+        <option value="rebecca">Rebecca</option>
+        <option value="morte-no-internato">Morte no Internato</option>
+        <option value="garota-exemplar">Garota Exemplar</option>
+        <!-- Livros de Mistério -->
+        <option value="o-simbolo-perdido">O Símbolo Perdido</option>
+        <option value="a-mortalha-dourada">A Mortalha Dourada</option>
+        <option value="o-homem-de-giz">O Homem de Giz</option>
         <!-- Adicione mais opções de livros aqui -->
       </select>
 
-      <label for="author">Autor:</label>
-      <input type="text" id="author" name="author" required>
+      <label for="author">Avaliador:</label>
+      <input type="text" id="author" name="author" required value="<%= username %>" readonly>
 
       <label for="genre">Gênero:</label>
       <button type="button" onclick="toggleGenres()">Gênero</button>
       <div class="checkbox-group" id="genre-options" style="display: none;">
-        <input type="checkbox" id="fantasy" name="genre" value="Fantasia" disabled>
-        <label for="fantasy">Fantasia</label>
+        <input type="checkbox" id="romance" name="genre" value="Romance" disabled>
+        <label for="romance">Romance</label>
 
-        <input type="checkbox" id="sci-fi" name="genre" value="Ficcao Cientifica" disabled>
-        <label for="sci-fi">Ficção Científica</label>
+        <input type="checkbox" id="terror" name="genre" value="Terror" disabled>
+        <label for="terror">Terror</label>
 
-        <!-- Adicione mais opções de gênero aqui -->
+        <input type="checkbox" id="comedia" name="genre" value="Comedia" disabled>
+        <label for="comedia">Comédia</label>
+
+        <input type="checkbox" id="suspense" name="genre" value="Suspense" disabled>
+        <label for="suspense">Suspense</label>
+
+        <input type="checkbox" id="historia" name="genre" value="Historia" disabled>
+        <label for="historia">História</label>
+
+        <input type="checkbox" id="misterio" name="genre" value="Misterio" disabled>
+        <label for="misterio">Mistério</label>
+
+        <input type="checkbox" id="fantasia" name="genre" value="Fantasia" disabled>
+        <label for="fantasia">Fantasia</label>
+
+        <input type="checkbox" id="ficcao-cientifica" name="genre" value="Ficcao Cientifica" disabled>
+        <label for="ficcao-cientifica">Ficção Científica</label>
+
+        <input type="checkbox" id="drama" name="genre" value="Drama" disabled>
+        <label for="drama">Drama</label>
+
+        
       </div>
+
+      
 
       <label for="rating">Avaliação (1 a 5):</label>
       <div class="rating" id='rating'>

@@ -25,7 +25,7 @@
     <!-- Avaliações ... -->
     <h2 class="reviews-title">Comentários:</h2>
     <div class="reviews-container">
-        <%-- Adicione um trecho de código Java para buscar os comentários do banco de dados --%>
+        
         <%
             String url = "jdbc:mysql://localhost:3306/palavrasencantadas";
             String usuarioBD = "root";
